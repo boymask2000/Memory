@@ -45,7 +45,7 @@ public class Table {
 
     public void draw(Canvas canvas, Paint mPaint, int screenWidth) {
         //  setTextSizeForWidth(mPaint,300, "1");
-        int cSize = screenWidth / (size+1);
+        int cSize = screenWidth / (size+2);
         mPaint.setTextSize(cSize);
         int fattX = screenWidth / size;
         int fattY = screenWidth / size;

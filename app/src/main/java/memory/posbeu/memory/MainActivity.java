@@ -12,16 +12,17 @@ import android.view.MenuItem;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
 
     private SurfacePanel surface;
     private Table table=new Table(8);
-  //  private Sudoku sudoku;
-  //  private AdView mAdView;
 
+  private TextView textTentativi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +31,8 @@ public class MainActivity extends Activity {
 
    //     setBanner();
 
-
-        LinearLayout lay = findViewById(R.id.board);
+        textTentativi = (TextView) findViewById(R.id.tentativi);
+        FrameLayout lay = findViewById(R.id.board);
 
         surface = new SurfacePanel(getBaseContext(), null, this);
         lay.addView(surface);
@@ -41,6 +42,9 @@ public class MainActivity extends Activity {
 
    //     sudoku = new Sudoku(this);
 
+    }
+    public void setTentativi(int n){
+        textTentativi.setText(""+n);
     }
     private void setBanner(){
    /*     MobileAds.initialize(this, "");

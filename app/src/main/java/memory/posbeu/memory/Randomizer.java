@@ -13,7 +13,7 @@ public class Randomizer {
             lista.add(i);
         for (int i = 1; i <= size/2; i++)
             lista.add(i);
-        System.out.println(lista.size());
+
     }
 
     public Integer getNextRandom(){
