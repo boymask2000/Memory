@@ -1,71 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <LinearLayout
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="73dp">
+
+
+    <TextView
+        android:id="@+id/tentativi"
+        android:layout_width="74dp"
+        android:layout_height="16dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/tentativi0"
+        app:layout_constraintTop_toBottomOf="@+id/board" />
+
+    <Button
+        android:id="@+id/cleanAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Clean All"
+        app:layout_constraintStart_toEndOf="@+id/solve"
+        app:layout_constraintTop_toBottomOf="@+id/tentativi" />
 
-        android:gravity="right"
-        android:orientation="horizontal">
+    <Button
+        android:id="@+id/solve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Solve"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tentativi0" />
+
+    <FrameLayout
+        android:id="@+id/board"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+
+
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+    </FrameLayout>
+
     <TextView
         android:id="@+id/tentativi0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tentativi" />
-    <TextView
-        android:id="@+id/tentativi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-      />
-    </LinearLayout>
-    <FrameLayout
-        android:id="@+id/board"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/buttons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/board"
-
-        android:orientation="vertical">
 
 
-       Tentativi: <TextView
-            android:id="@+id/tentativi1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tentativi" />
+        android:layout_marginTop="8dp"
+        android:text="@string/tentativi"
+        app:layout_constraintTop_toBottomOf="@+id/board"
+        tools:layout_editor_absoluteX="8dp" />
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#c2300f"
-            android:gravity="right"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/solve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Solve" />
-
-            <Button
-                android:id="@+id/cleanAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Clean All" />
-        </LinearLayout>
-
-
-    </LinearLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
 
