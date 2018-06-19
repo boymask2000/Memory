@@ -10,19 +10,29 @@
         <menu>
 
             <item
-                android:id="@+id/viewFinal"
+                android:id="@+id/usanumeri"
                 android:showAsAction="ifRoom"
-                android:title="@string/vedi_immagine"
+                android:title="@string/usa_numeri"
                 tools:ignore="AppCompatResource" />
             <item
-                android:id="@+id/solve"
+                android:id="@+id/usaimmagini"
                 android:showAsAction="ifRoom"
-                android:title="@string/risolvi"
+                android:title="@string/usa_immagini"
                 tools:ignore="AppCompatResource" />
             <item
-                android:id="@+id/opzioni"
+                android:id="@+id/size4"
                 android:showAsAction="ifRoom"
-                android:title="@string/opzioni"
+                android:title="@string/size4"
+                tools:ignore="AppCompatResource" />
+            <item
+                android:id="@+id/size6"
+                android:showAsAction="ifRoom"
+                android:title="@string/size6"
+                tools:ignore="AppCompatResource" />
+            <item
+                android:id="@+id/size8"
+                android:showAsAction="ifRoom"
+                android:title="@string/size8"
                 tools:ignore="AppCompatResource" />
         </menu>
     </item>

@@ -1,26 +1,32 @@
 package memory.posbeu.memory;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 
 
 public class Table {
 
 
-
-    private  int size=0;
+    private final MainActivity main;
+    private int size = 0;
     private TableCell[][] table = new TableCell[10][10];
     private TableCell selectedCell;
 
 
-    public Table(int size) {
-        this.size=size;
+    public Table(MainActivity mainActivity, int size) {
+        this.main = mainActivity;
+        this.size = size;
         table = new TableCell[size][size];
-        for (int i = 0; i <size; i++)
+        for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
                 table[i][j] = new TableCell(i, j);
 
+        init();
     }
 
 
@@ -41,11 +47,9 @@ public class Table {
     }
 
 
-
-
-    public void draw(Canvas canvas, Paint mPaint, int screenWidth) {
+    public void draw(SurfacePanel surfacePanel, Canvas canvas, Paint mPaint, int screenWidth) {
         //  setTextSizeForWidth(mPaint,300, "1");
-        int cSize = screenWidth / (size+2);
+        int cSize = screenWidth / (size + 2);
         mPaint.setTextSize(cSize);
         int fattX = screenWidth / size;
         int fattY = screenWidth / size;
@@ -57,6 +61,10 @@ public class Table {
                 int y = j * fattY + 2;
                 fill(canvas, screenWidth, x, y, Color.WHITE);
 
+        /*        Bitmap icon = BitmapFactory.decodeResource(surfacePanel.getContext().getResources(),R.drawable.img_1);
+                Drawable d = surfacePanel.getContext().getResources().getDrawable(R.drawable.img_1);
+                Bitmap myLogo = ((BitmapDrawable)surfacePanel.getContext().getResources().getDrawable(R.drawable.img_1)).getBitmap();
+                canvas.drawColor(Color.BLACK);*/
 
 
                 if (selectedCell != null && selectedCell.equals(cell)) {
@@ -66,10 +74,11 @@ public class Table {
 
 
                 if (cell.isShow()) {
-
-                    canvas.drawText("" + cell.getCurrentVal(), i * fattX + 2, (j + 1) * fattY - 4, mPaint);
-                }
-                else
+                    if (main.isUseImages())
+                        canvas.drawBitmap(Heap.getIcon(cell.getCurrentVal() - 1), x, y, new Paint());
+                    else
+                        canvas.drawText("" + cell.getCurrentVal(), i * fattX + 2, (j + 1) * fattY - 4, mPaint);
+                } else
                     fill(canvas, screenWidth, x, y, Color.WHITE);
 
             }
@@ -85,14 +94,38 @@ public class Table {
 
 
     public void init() {
-        Randomizer rand = new Randomizer(size*size);
-        for (int i = 0; i <size; i++)
-            for (int j = 0; j <size; j++) {
+        Randomizer rand = new Randomizer(size * size);
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++) {
                 table[i][j].setCurrentVal(rand.getNextRandom());
             }
 
     }
+
     public int getSize() {
         return size;
+    }
+
+    public int getCellSize() {
+        return main.getScreenWidth() / size;
+    }
+
+    public boolean isRisolto() {
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++)
+                if (!table[i][j].isShow()) return false;
+
+        return true;
+    }
+
+    public void solve() {
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++) table[i][j].setShow(true);
+    }
+
+    public void clean() {
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++) table[i][j].setShow(false);
+        init();
     }
 }

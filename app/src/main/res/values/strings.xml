@@ -1,14 +1,10 @@
 <resources>
-    <string name="app_name">Memory</string>
+    <string name="app_name">Memory Mahjong</string>
     <string name="tentativi">Tentativi:</string>
 
-    <string name="get_image">Scegli Immagine</string>
-    <string name="start">Inizia</string>
 
-    <string name="title_activity_show_image">ShowImage</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="vedi_immagine">Vedi immagine</string>
+
+
     <string name="risolvi">Risolvi</string>
     <string name="title_activity_settings">Settings</string>
 
@@ -16,4 +12,9 @@
     <string name="opzioni">Opzioni</string>
     <string name="livello">Livello</string>
     <string name="pref_update_setting">Settings</string>
+    <string name="usa_numeri">Usa numeri</string>
+    <string name="usa_immagini">Usa Immagini</string>
+    <string name="size4">gioco 4x4</string>
+    <string name="size6">Gioco 6x6</string>
+    <string name="size8">Gioco 8x8</string>
 </resources>

@@ -21,20 +21,18 @@
 
     <Button
         android:id="@+id/cleanAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="94dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         android:text="Clean All"
         app:layout_constraintStart_toEndOf="@+id/solve"
         app:layout_constraintTop_toBottomOf="@+id/tentativi" />
 
     <Button
         android:id="@+id/solve"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="64dp"
+        android:layout_height="45dp"
         android:text="Solve"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tentativi0" />
@@ -42,11 +40,11 @@
     <FrameLayout
         android:id="@+id/board"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
 
 
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 
@@ -56,11 +54,24 @@
         android:layout_height="wrap_content"
 
 
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/tentativi"
-        app:layout_constraintTop_toBottomOf="@+id/board"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/board" />
 
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6114671792914206/1667379087"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toBottomOf="@+id/cleanAll"></com.google.android.gms.ads.AdView>
 
 </android.support.constraint.ConstraintLayout>
 
