@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
         //     sudoku = new Sudoku(this);
 
         loadIcons();
-        MobileAds.initialize(this, "ca-app-pub-6114671792914206/1667379087");
+
 
     }
 
@@ -121,7 +121,7 @@ public class MainActivity extends Activity {
     }
 
     private void setBanner() {
-        MobileAds.initialize(this, "");
+        MobileAds.initialize(this, "ca-app-pub-6114671792914206/1667379087");
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
