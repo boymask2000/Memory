@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
@@ -63,14 +64,24 @@ public class Table {
                 if (cell.isShow()) {
                     if (main.isUseImages())
                         canvas.drawBitmap(Heap.getIcon(cell.getCurrentVal() - 1), x, y, new Paint());
-                    else
-                        canvas.drawText("" + cell.getCurrentVal(), i * fattX + 2, (j + 1) * fattY - 4, mPaint);
-                } else
+                    else{
+                        drawText(canvas, mPaint, ""+cell.getCurrentVal(),i * fattX , (j +1) * fattY, cSize );
+                 //       canvas.drawText("" + cell.getCurrentVal(), i * fattX + 2, (j + 1) * fattY - 4, mPaint);
+                } }else
                     fill(canvas, screenWidth, x, y, Color.WHITE);
 
             }
     }
+private void drawText(Canvas canvas, Paint paint, String text, int x, int y,int csize){
+    Rect r = new Rect();
+    paint.getTextBounds(text, 0, text.length(), r);
+    int h=csize-r.height();
+    int w=csize-r.width();
+    int yPos = y-h/2;
+    int xPos =  x+w/2;
+    canvas.drawText(text, xPos, yPos, paint);
 
+}
     private void fill(Canvas canvas, int screenWidth, int x, int y, int color) {
         int ss = screenWidth / size - 2;
         Paint paint = new Paint();
