@@ -43,6 +43,7 @@ public class MainActivity extends Activity {
 
     private boolean useImages;
     private int gameSize = 8;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +123,7 @@ public class MainActivity extends Activity {
 
     private void setBanner() {
         MobileAds.initialize(this, "ca-app-pub-6114671792914206/1667379087");
-        AdView mAdView = findViewById(R.id.adView);
+        mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
