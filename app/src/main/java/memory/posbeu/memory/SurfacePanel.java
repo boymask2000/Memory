@@ -38,21 +38,22 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
     private final MainActivity mainActivity;
     private MyThread mythread;
     private int screenWidth;
- //   private int screenHeight;
+    //   private int screenHeight;
     private int i = 0;
     private Paint mPaint = new Paint();
     private int tentativi;
     private Pair firstCell = null;
     private boolean firstMove = true;
+    private int coppie;
 
 
     public SurfacePanel(Context ctx, AttributeSet attrSet, MainActivity mainActivity) {
         super(ctx, attrSet);
         context = ctx;
         this.mainActivity = mainActivity;
-        screenWidth= mainActivity.getScreenWidth();
-     //   getDims();
-       // setClipBounds(new Rect(0, 0, screenWidth, screenWidth));
+        screenWidth = mainActivity.getScreenWidth();
+        //   getDims();
+        // setClipBounds(new Rect(0, 0, screenWidth, screenWidth));
         getHolder().setFixedSize(screenWidth, screenWidth);
 //setBackgroundColor(Color.RED);
         SurfaceHolder holder = getHolder();
@@ -76,8 +77,8 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
             canvas.drawLine(i * step, 0, i * step, screenWidth, mPaint);
             canvas.drawLine(0, i * step, screenWidth, i * step, mPaint);
         }
-      Table table = mainActivity.getTable();
-        table.draw(this,canvas, mPaint, screenWidth);
+        Table table = mainActivity.getTable();
+        table.draw(this, canvas, mPaint, screenWidth);
 
     }
 
@@ -142,11 +143,12 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
             if (c1.getCurrentVal() != c2.getCurrentVal()) {
                 c1.setShow(false);
                 c2.setShow(false);
-            }
+            } else coppie++;
+            mainActivity.setCoppie(coppie);
 
         }
-        if( mainActivity.getTable().isRisolto()){
-            PopupMessage.info(mainActivity,"Completato !");
+        if (mainActivity.getTable().isRisolto()) {
+            PopupMessage.info(mainActivity, "Completato !");
         }
 
 
@@ -180,5 +182,10 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
 
     public void update() {
         invalidate();
+    }
+
+    public void reset() {
+        tentativi = 0;
+        coppie = 0;
     }
 }

@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
     private Table table = null;
 
     private TextView textTentativi;
+    private TextView textCoppie;
 
     private int screenWidth;
     private int screenHeight;
@@ -54,6 +55,7 @@ public class MainActivity extends Activity {
         setBanner();
 
         textTentativi = (TextView) findViewById(R.id.tentativi);
+        textCoppie = (TextView) findViewById(R.id.coppie);
         FrameLayout lay = findViewById(R.id.board);
 
         getDims();
@@ -144,6 +146,7 @@ public class MainActivity extends Activity {
         cleanAll.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 table.clean();
+                surface.reset();
             }
         });
     }
@@ -275,4 +278,8 @@ public class MainActivity extends Activity {
         return screenWidth;
     }
 
+    public void setCoppie(int n) {
+
+        textCoppie.setText("" + n);
+    }
 }
