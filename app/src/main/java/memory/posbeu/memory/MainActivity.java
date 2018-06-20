@@ -65,11 +65,7 @@ public class MainActivity extends Activity {
 
         handleButtons();
 
-        //     sudoku = new Sudoku(this);
-
         loadIcons();
-
-
     }
 
     private void loadIcons() {
@@ -112,9 +108,7 @@ public class MainActivity extends Activity {
         int s = table.getCellSize() - 2;
         Bitmap icon = BitmapFactory.decodeResource(getResources(), id);
 
-
         Bitmap bMapScaled = Bitmap.createScaledBitmap(icon, s, s, true);
-
 
         Heap.setIcon(i, bMapScaled);
     }
@@ -128,7 +122,6 @@ public class MainActivity extends Activity {
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
     }
 
 
