@@ -15,7 +15,6 @@ public class Table {
     private final MainActivity main;
     private int size = 0;
     private TableCell[][] table = new TableCell[10][10];
-    private TableCell selectedCell;
 
 
     public Table(MainActivity mainActivity, int size) {
@@ -59,19 +58,7 @@ public class Table {
 
                 int x = i * fattX + 2;
                 int y = j * fattY + 2;
-                fill(canvas, screenWidth, x, y, Color.WHITE);
-
-        /*        Bitmap icon = BitmapFactory.decodeResource(surfacePanel.getContext().getResources(),R.drawable.img_1);
-                Drawable d = surfacePanel.getContext().getResources().getDrawable(R.drawable.img_1);
-                Bitmap myLogo = ((BitmapDrawable)surfacePanel.getContext().getResources().getDrawable(R.drawable.img_1)).getBitmap();
-                canvas.drawColor(Color.BLACK);*/
-
-
-                if (selectedCell != null && selectedCell.equals(cell)) {
-
-                    fill(canvas, screenWidth, x, y, Color.DKGRAY);
-                }
-
+          //      fill(canvas, screenWidth, x, y, Color.WHITE);
 
                 if (cell.isShow()) {
                     if (main.isUseImages())
