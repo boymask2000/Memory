@@ -139,6 +139,8 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
             c2.setShow(true);
             try {
                 Thread.sleep(1000);
+                c1.setCandidate(false);
+                c2.setCandidate(false);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
