@@ -179,6 +179,10 @@ public class MainActivity extends Activity {
                 table = new Table(this, gameSize);
                 loadIcons();
                 break;
+            case R.id.preview:
+
+                table.preview();
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }

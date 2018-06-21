@@ -61,7 +61,7 @@ public class Table {
                 int y = j * fattY + 2;
                 fill(canvas, screenWidth, x, y, Color.WHITE);
 
-                if (cell.isShow()) {
+                if (cell.isShow() || cell.isShowPreview()) {
                     if (main.isUseImages())
                         canvas.drawBitmap(Heap.getIcon(cell.getCurrentVal() - 1), x, y, new Paint());
                     else {
@@ -141,5 +141,25 @@ public class Table {
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++) table[i][j].setShow(false);
         init();
+    }
+
+    public void preview() {
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++) table[i][j].setShowPreview(true);
+
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                for (int i = 0; i < size; i++)
+                    for (int j = 0; j < size; j++) table[i][j].setShowPreview(false);
+            }
+        }.start();
+
+
     }
 }

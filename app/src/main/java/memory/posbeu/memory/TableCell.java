@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class TableCell {
     private boolean show = false;
+    private boolean showPreview = false;
     private int x;
     private int y;
     private int currentVal;
@@ -70,7 +71,17 @@ public class TableCell {
     public boolean isCandidate() {
         return candidate;
     }
+
     public void setCandidate(boolean b) {
-        candidate=b;
+        candidate = b;
     }
+
+    public boolean isShowPreview() {
+        return showPreview;
+    }
+
+    public void setShowPreview(boolean showPreview) {
+        this.showPreview = showPreview;
+    }
+
 }

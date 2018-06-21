@@ -35,15 +35,15 @@
         android:layout_height="44dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="Clean All"
+        android:text="Nuovo"
         app:layout_constraintStart_toEndOf="@+id/solve"
         app:layout_constraintTop_toBottomOf="@+id/tentativi" />
 
     <Button
         android:id="@+id/solve"
-        android:layout_width="64dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:text="Solve"
+        android:text="Risolvi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tentativi0" />
 
