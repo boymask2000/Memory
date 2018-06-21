@@ -68,6 +68,19 @@ public class Table {
                         drawText(canvas, mPaint, "" + cell.getCurrentVal(), i * fattX, (j + 1) * fattY, cSize);
                         //       canvas.drawText("" + cell.getCurrentVal(), i * fattX + 2, (j + 1) * fattY - 4, mPaint);
                     }
+
+                    if (cell.isCandidate()) {
+                        Paint paint = new Paint();
+                        paint.setStrokeWidth(4);
+                        paint.setStyle(Paint.Style.STROKE);
+                        paint.setColor(Color.GREEN);
+                        canvas.drawRect(i * fattX + 4, j * fattY + 4,
+                                (i + 1) * fattX - 2, (j + 1) * fattY - 2, paint);
+
+                        //    canvas.drawRect(i * fattX+1, j  * fattY+1,(i+1) * fattX+1, j  * fattY+4,paint);
+                        //    canvas.drawRect(i * fattX+1, (j+1)  * fattY+1,(i+1) * fattX+1, (j+1)  * fattY+4,paint);
+
+                    }
                 } else
                     fill(canvas, screenWidth, x, y, Color.WHITE);
 

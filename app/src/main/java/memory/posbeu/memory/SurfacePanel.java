@@ -127,6 +127,7 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
 
             TableCell c1 = tab.getCell(firstCell.getX(), firstCell.getY());
             c1.setShow(true);
+            c1.setCandidate(true);
 
         } else {
             tentativi++;
@@ -134,6 +135,7 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
 
             TableCell c1 = tab.getCell(firstCell.getX(), firstCell.getY());
             TableCell c2 = tab.getCell(cella.getX(), cella.getY());
+            c2.setCandidate(true);
             c2.setShow(true);
             try {
                 Thread.sleep(1000);

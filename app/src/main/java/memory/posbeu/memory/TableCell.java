@@ -8,6 +8,9 @@ public class TableCell {
     private int y;
     private int currentVal;
 
+
+    private boolean candidate;
+
     public TableCell(int x, int y) {
         this.x = x;
         this.y = y;
@@ -62,5 +65,12 @@ public class TableCell {
 
     public void setShow(boolean show) {
         this.show = show;
+    }
+
+    public boolean isCandidate() {
+        return candidate;
+    }
+    public void setCandidate(boolean b) {
+        candidate=b;
     }
 }
