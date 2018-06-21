@@ -59,7 +59,7 @@ public class Table {
 
                 int x = i * fattX + 2;
                 int y = j * fattY + 2;
-                //      fill(canvas, screenWidth, x, y, Color.WHITE);
+                fill(canvas, screenWidth, x, y, Color.WHITE);
 
                 if (cell.isShow()) {
                     if (main.isUseImages())
