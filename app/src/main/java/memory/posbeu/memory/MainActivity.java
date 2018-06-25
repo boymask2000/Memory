@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
         loadIcon(27, R.mipmap.img_28);
         loadIcon(28, R.mipmap.img_29);
         loadIcon(29, R.mipmap.img_30);
-        loadIcon(30, R.mipmap.img_21);
+        loadIcon(30, R.mipmap.img_31);
         loadIcon(31, R.mipmap.img_32);
     }
 
