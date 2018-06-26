@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -47,6 +48,10 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
     private int coppie;
 
 
+
+    private Date startTime;
+
+
     public SurfacePanel(Context ctx, AttributeSet attrSet, MainActivity mainActivity) {
         super(ctx, attrSet);
         context = ctx;
@@ -59,6 +64,8 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
         SurfaceHolder holder = getHolder();
 
         holder.addCallback(this);
+
+        startTime=new Date();
     }
 
     @Override
@@ -80,6 +87,7 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
         Table table = mainActivity.getTable();
         table.draw(this, canvas, mPaint, screenWidth);
 
+        mainActivity.setTime(startTime);
     }
 
     @Override
@@ -192,5 +200,9 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
     public void reset() {
         tentativi = 0;
         coppie = 0;
+        startTime=new Date();
+    }
+    public Date getStartTime() {
+        return startTime;
     }
 }

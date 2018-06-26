@@ -19,4 +19,5 @@
     <string name="size8">Gioco 8x8</string>
     <string name="coppie">Coppie</string>
     <string name="preview">Mostra soluzione</string>
+    <string name="time">Tempo</string>
 </resources>

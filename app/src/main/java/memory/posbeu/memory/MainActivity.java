@@ -7,27 +7,24 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+
+import java.util.Date;
 
 
 public class MainActivity extends Activity {
@@ -37,6 +34,7 @@ public class MainActivity extends Activity {
 
     private TextView textTentativi;
     private TextView textCoppie;
+    private TextView textTime;
 
     private int screenWidth;
     private int screenHeight;
@@ -56,6 +54,7 @@ public class MainActivity extends Activity {
 
         textTentativi = (TextView) findViewById(R.id.tentativi);
         textCoppie = (TextView) findViewById(R.id.coppie);
+        textTime = (TextView) findViewById(R.id.time);
         FrameLayout lay = findViewById(R.id.board);
 
         getDims();
@@ -138,8 +137,7 @@ public class MainActivity extends Activity {
         Button cleanAll = findViewById(R.id.cleanAll);
         cleanAll.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                table.clean();
-                surface.reset();
+                reset();
             }
         });
     }
@@ -166,18 +164,15 @@ public class MainActivity extends Activity {
                 return true;
             case R.id.size4:
                 gameSize = 4;
-                table = new Table(this, gameSize);
-                loadIcons();
+                reset();
                 break;
             case R.id.size6:
                 gameSize = 6;
-                table = new Table(this, gameSize);
-                loadIcons();
+                reset();
                 break;
             case R.id.size8:
                 gameSize = 8;
-                table = new Table(this, gameSize);
-                loadIcons();
+                reset();
                 break;
             case R.id.preview:
 
@@ -187,6 +182,15 @@ public class MainActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
         return false;
+    }
+
+    private void reset() {
+        table = new Table(this, gameSize);
+        loadIcons();
+        table.clean();
+        surface.reset();
+        setCoppie(0);
+        setTentativi(0);
     }
 
     @Override
@@ -278,5 +282,23 @@ public class MainActivity extends Activity {
     public void setCoppie(int n) {
 
         textCoppie.setText("" + n);
+    }
+
+    public void setTime(Date startTime) {
+        long msec = surface.getStartTime().getTime();
+        long now = (new Date()).getTime();
+        long secs = (now - msec) / 1000;
+        long hours = secs / 3600;
+        long diff = secs % 3600;
+        long mins = diff / 60;
+        long ssecs = diff % 60;
+        String s = "";
+        if (hours > 0) s += "" + hours;
+        if (s.length() > 0) s += ":";
+        if (mins > 0) s += "" + mins;
+        if (s.length() > 0) s += ":";
+        s += ssecs;
+
+        textTime.setText(s);
     }
 }
