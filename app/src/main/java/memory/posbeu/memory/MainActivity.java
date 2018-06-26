@@ -49,12 +49,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main1);
-
+        textTime = (TextView) findViewById(R.id.time);
         setBanner();
 
         textTentativi = (TextView) findViewById(R.id.tentativi);
         textCoppie = (TextView) findViewById(R.id.coppie);
-        textTime = (TextView) findViewById(R.id.time);
+
         FrameLayout lay = findViewById(R.id.board);
 
         getDims();
@@ -299,6 +299,7 @@ public class MainActivity extends Activity {
         if (s.length() > 0) s += ":";
         s += ssecs;
 
-        textTime.setText(s);
+        if (textTime != null)
+            textTime.setText(s);
     }
 }
