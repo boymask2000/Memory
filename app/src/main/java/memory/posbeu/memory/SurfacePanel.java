@@ -48,7 +48,6 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
     private int coppie;
 
 
-
     private Date startTime;
 
 
@@ -64,8 +63,8 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
         SurfaceHolder holder = getHolder();
 
         holder.addCallback(this);
+        startTime = new Date();
 
-        startTime=new Date();
     }
 
     @Override
@@ -86,8 +85,6 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
         }
         Table table = mainActivity.getTable();
         table.draw(this, canvas, mPaint, screenWidth);
-
-        mainActivity.setTime(startTime);
     }
 
     @Override
@@ -113,10 +110,12 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
 
     }
 
+    boolean started = false;
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(final MotionEvent event) {
         Table tab = mainActivity.getTable();
+
         if (event.getAction() != MotionEvent.ACTION_DOWN) return false;
 
         float x = event.getX();
@@ -160,7 +159,11 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
             mainActivity.setCoppie(coppie);
 
         }
-        if (mainActivity.getTable().isRisolto()) {
+        if (mainActivity.getTable().
+
+                isRisolto())
+
+        {
             PopupMessage.info(mainActivity, "Completato !");
         }
 
@@ -200,8 +203,9 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
     public void reset() {
         tentativi = 0;
         coppie = 0;
-        startTime=new Date();
+        startTime = new Date();
     }
+
     public Date getStartTime() {
         return startTime;
     }

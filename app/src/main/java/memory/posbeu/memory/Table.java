@@ -109,6 +109,7 @@ public class Table {
 
     public void init() {
         Randomizer rand = new Randomizer(size * size);
+        int val=1;
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++) {
                 table[i][j].setCurrentVal(rand.getNextRandom());

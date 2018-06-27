@@ -65,6 +65,24 @@ public class MainActivity extends Activity {
         handleButtons();
 
         loadIcons();
+        new Thread() {
+            public void run() {
+                while (true) {
+                    try {
+                        runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                setTime();
+                            }
+                        });
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }.start();
     }
 
     private void loadIcons() {
@@ -284,7 +302,7 @@ public class MainActivity extends Activity {
         textCoppie.setText("" + n);
     }
 
-    public void setTime(Date startTime) {
+    public void setTime() {
         long msec = surface.getStartTime().getTime();
         long now = (new Date()).getTime();
         long secs = (now - msec) / 1000;
