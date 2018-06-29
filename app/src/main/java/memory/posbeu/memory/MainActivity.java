@@ -25,6 +25,10 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 import java.util.Date;
+import java.util.List;
+
+import memory.posbeu.memory.database.DBPartite;
+import memory.posbeu.memory.database.Partita;
 
 
 public class MainActivity extends Activity {
@@ -41,6 +45,8 @@ public class MainActivity extends Activity {
 
 
     private boolean useImages;
+
+    private boolean gameIsGoing = true;
     private int gameSize = 8;
     private AdView mAdView;
 
@@ -83,6 +89,8 @@ public class MainActivity extends Activity {
                 }
             }
         }.start();
+
+
     }
 
     private void loadIcons() {
@@ -196,10 +204,39 @@ public class MainActivity extends Activity {
 
                 table.preview();
                 break;
+            case R.id.classifica_4: {
+                Intent intent = new Intent(this, ClassificaActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("key", 4); //Your id
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+            }
+            break;
+            case R.id.classifica_6: {
+                Intent intent = new Intent(this, ClassificaActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("key", 6); //Your id
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+            }
+            break;
+            case R.id.classifica_8: {
+                Intent intent = new Intent(this, ClassificaActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("key", 8); //Your id
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
+            }
+
+            break;
             default:
                 return super.onOptionsItemSelected(item);
         }
         return false;
+    }
+
+    public void setGameIsGoing(boolean gameIsGoing) {
+        this.gameIsGoing = gameIsGoing;
     }
 
     private void reset() {
@@ -209,6 +246,7 @@ public class MainActivity extends Activity {
         surface.reset();
         setCoppie(0);
         setTentativi(0);
+        gameIsGoing = true;
     }
 
     @Override
@@ -303,7 +341,19 @@ public class MainActivity extends Activity {
     }
 
     public void setTime() {
-        long msec = surface.getStartTime().getTime();
+        if (!gameIsGoing) return;
+        String s = getTime(surface.getStartTime());
+
+        if (textTime != null)
+            textTime.setText(s);
+    }
+
+    public int getGameSize() {
+        return gameSize;
+    }
+
+    public static String getTime(Date startTime) {
+        long msec = startTime.getTime();
         long now = (new Date()).getTime();
         long secs = (now - msec) / 1000;
         long hours = secs / 3600;
@@ -316,8 +366,7 @@ public class MainActivity extends Activity {
         if (mins > 0) s += "" + mins;
         if (s.length() > 0) s += ":";
         s += ssecs;
-
-        if (textTime != null)
-            textTime.setText(s);
+        return s;
     }
+
 }

@@ -24,10 +24,14 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+
+import memory.posbeu.memory.database.DBPartite;
+import memory.posbeu.memory.database.Partita;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
@@ -159,18 +163,36 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
             mainActivity.setCoppie(coppie);
 
         }
-        if (mainActivity.getTable().
-
-                isRisolto())
-
-        {
+        if (mainActivity.getTable().isRisolto()) {
             PopupMessage.info(mainActivity, "Completato !");
+            mainActivity.setGameIsGoing(false);
+            updateDb();
         }
 
 
         firstMove = !firstMove;
 
         return true;
+    }
+
+    private void updateDb() {
+        new Thread() {
+            public void run() {
+                Partita p = new Partita();
+                p.setData(getData());
+                p.setNumMosse(tentativi);
+                p.setGameSize(mainActivity.getGameSize());
+                p.setTime(MainActivity.getTime(startTime));
+
+                DBPartite.getDb(mainActivity).daoAccess().insert(p);
+            }
+        }.start();
+    }
+
+    private String getData() {
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
+        return DATE_FORMAT.format(new Date());
+
     }
 
 

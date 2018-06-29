@@ -35,10 +35,25 @@
                 android:title="@string/size8"
                 tools:ignore="AppCompatResource" />
             <item
-            android:id="@+id/preview"
-            android:showAsAction="ifRoom"
-            android:title="@string/preview"
-            tools:ignore="AppCompatResource" />
+                android:id="@+id/preview"
+                android:showAsAction="ifRoom"
+                android:title="@string/preview"
+                tools:ignore="AppCompatResource" />
+            <item
+                android:id="@+id/classifica_4"
+                android:showAsAction="ifRoom"
+                android:title="@string/classifica4"
+                tools:ignore="AppCompatResource" />
+            <item
+                android:id="@+id/classifica_6"
+                android:showAsAction="ifRoom"
+                android:title="@string/classifica6"
+                tools:ignore="AppCompatResource" />
+            <item
+                android:id="@+id/classifica_8"
+                android:showAsAction="ifRoom"
+                android:title="@string/classifica8"
+                tools:ignore="AppCompatResource" />
         </menu>
     </item>
 
