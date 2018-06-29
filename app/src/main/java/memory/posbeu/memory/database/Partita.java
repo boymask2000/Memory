@@ -19,6 +19,9 @@ public class Partita {
     private int numMosse=0;
     private String time;
 
+
+    private long seconds;
+
     public Partita(){
 
         Date d = new Date();
@@ -65,4 +68,12 @@ public class Partita {
     public void setTime(String time) {
         this.time = time;
     }
+    public long getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(long seconds) {
+        this.seconds = seconds;
+    }
+
 }

@@ -1,6 +1,7 @@
 package memory.posbeu.memory;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -9,20 +10,21 @@ public class Randomizer {
 
     public Randomizer(int size) {
 
-        for (int i = 1; i <= size/2; i++)
+        for (int i = 1; i <= size / 2; i++)
             lista.add(i);
-        for (int i = 1; i <= size/2; i++)
+        for (int i = 1; i <= size / 2; i++)
             lista.add(i);
 
     }
 
-    public Integer getNextRandom(){
-        if(lista.size()==0)return null;
-        Random rand = new Random();
+    public Integer getNextRandom() {
+        long seed = (new Date()).getTime();
+        if (lista.size() == 0) return null;
+        Random rand = new Random(seed);
 
-        int  n = rand.nextInt(lista.size()) ;
+        int n = rand.nextInt(lista.size());
 
-        int val=lista.get(n);
+        int val = lista.get(n);
         lista.remove(n);
         return val;
     }

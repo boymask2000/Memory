@@ -18,7 +18,7 @@ public interface DaoAccess {
     @Query("SELECT * FROM Partita WHERE _id = :id")
     Partita fetch(String id);
 
-    @Query("SELECT * FROM Partita where gameSize= :size")
+    @Query("SELECT * FROM Partita where gameSize= :size order by seconds")
     Cursor getAll(int size);
 
     @Update

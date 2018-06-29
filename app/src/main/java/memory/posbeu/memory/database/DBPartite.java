@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {Partita.class}, version = 5, exportSchema = false)
+@Database(entities = {Partita.class}, version = 6, exportSchema = false)
 
 
 public abstract class DBPartite extends RoomDatabase {

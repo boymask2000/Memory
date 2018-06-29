@@ -351,7 +351,12 @@ public class MainActivity extends Activity {
     public int getGameSize() {
         return gameSize;
     }
-
+    public static long getTimeSeconds(Date startTime) {
+        long msec = startTime.getTime();
+        long now = (new Date()).getTime();
+        long secs = (now - msec) / 1000;
+        return secs;
+    }
     public static String getTime(Date startTime) {
         long msec = startTime.getTime();
         long now = (new Date()).getTime();

@@ -183,6 +183,7 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
                 p.setNumMosse(tentativi);
                 p.setGameSize(mainActivity.getGameSize());
                 p.setTime(MainActivity.getTime(startTime));
+                p.setSeconds(MainActivity.getTimeSeconds(startTime));
 
                 DBPartite.getDb(mainActivity).daoAccess().insert(p);
             }
@@ -190,7 +191,7 @@ public class SurfacePanel extends SurfaceView implements SurfaceHolder.Callback 
     }
 
     private String getData() {
-        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         return DATE_FORMAT.format(new Date());
 
     }

@@ -7,12 +7,15 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.ContactsContract;
 
 
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -40,21 +43,24 @@ public class ClassificaActivity extends Activity {
         setContentView(R.layout.activity_classifica);
         listView = (ListView) findViewById(R.id.list);
         handleButtons();
-        View header = getLayoutInflater().inflate(R.layout.listview, null);
-      //  View footer = getLayoutInflater().inflate(R.layout.footer, null);
+
+        LayoutInflater inflater = getLayoutInflater();
+        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.rigalista, listView, false);
         listView.addHeaderView(header);
 
-
+        listView.setBackgroundColor(Color.WHITE);
+        header.setBackgroundColor(Color.GREEN);
         Bundle b = getIntent().getExtras();
         int value = -1; // or other values
-        if(b != null)
+        if (b != null)
             value = b.getInt("key");
 
 
-        new DataGetter(listView, this,value).execute();
+        new DataGetter(listView, this, value).execute();
 
 
     }
+
     private void handleButtons() {
 
         Button solve = findViewById(R.id.ok);
